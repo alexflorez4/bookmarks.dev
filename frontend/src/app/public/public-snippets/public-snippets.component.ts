@@ -24,8 +24,6 @@ export class PublicSnippetsComponent implements OnInit {
     const page = this.route.snapshot.queryParamMap.get('page');
     if (page) {
       this.currentPage = parseInt(page, 0);
-    } else {
-      this.currentPage = 1;
     }
 
     this.snippets$ = this.publicSnippetsService.getRecentPublicSnippets(this.currentPage, environment.PAGINATION_PAGE_SIZE);
@@ -33,21 +31,6 @@ export class PublicSnippetsComponent implements OnInit {
     this.paginationNotificationService.pageNavigationClicked$.subscribe(paginationAction => {
       if (paginationAction.caller === this.callerPaginationPublicSnippets) {
         this.snippets$ = this.publicSnippetsService.getRecentPublicSnippets(paginationAction.page, environment.PAGINATION_PAGE_SIZE);
-      }
-    });
-  }
-
-  private initPageNavigation() {
-    const page = this.route.snapshot.queryParamMap.get('page');
-    if (page) {
-      this.currentPage = parseInt(page, 0);
-    } else {
-      this.currentPage = 1;
-    }
-    this.paginationNotificationService.pageNavigationClicked$.subscribe(paginationAction => {
-      if (paginationAction.caller === this.callerPaginationPublicSnippets) {
-        this.currentPage = paginationAction.page;
-        this.publicSnippetsService.getRecentPublicSnippets(this.currentPage, environment.PAGINATION_PAGE_SIZE);
       }
     });
   }
