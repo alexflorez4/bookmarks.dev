@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorService } from '../../core/error/error.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
 import { SuggestedTagsStore } from '../../core/user/suggested-tags.store';
-import { Codelet } from '../../core/model/codelet';
+import { Snippet } from '../../core/model/snippet';
 import { PersonalCodeletsService } from '../../core/personal-codelets.service';
 import { textSizeValidator } from '../../core/validators/text-size.validator';
 import { WebpageInfoService } from '../../core/webpage-info/webpage-info.service';
@@ -28,12 +28,12 @@ export class CreateSnippetFormComponent extends SnippetFormBaseComponent impleme
   userId = null;
 
   @Input()
-  codelet$: Observable<Codelet>;
+  codelet$: Observable<Snippet>;
 
   @ViewChild('tagInput', {static: false})
   tagInput: ElementRef;
 
-  codelet: Codelet;
+  codelet: Snippet;
 
   @Input()
   code; // value of "desc" query parameter if present

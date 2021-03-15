@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { codelet_common_tags } from '../../shared/codelet-common-tags';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Codelet, CodeSnippet } from '../../core/model/codelet';
+import { Snippet, CodeSnippet } from '../../core/model/snippet';
 import { map, startWith } from 'rxjs/operators';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteActivatedEvent, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -45,7 +45,7 @@ export class SnippetFormBaseComponent implements OnInit {
   filteredTags: Observable<any[]>;
 
   @Input()
-  codelet: Codelet;
+  codelet: Snippet;
 
   @ViewChild('tagInput', {static: false})
   tagInput: ElementRef;
@@ -153,7 +153,7 @@ export class SnippetFormBaseComponent implements OnInit {
     this.codeSnippetsFormArray.removeAt(index);
   }
 
-  createCodelet(codelet: Codelet, copyToMine: boolean, popup: any) {
+  createCodelet(codelet: Snippet, copyToMine: boolean, popup: any) {
     codelet.userId = this.userId;
     const now = new Date();
     codelet.lastAccessedAt = now;
@@ -180,7 +180,7 @@ export class SnippetFormBaseComponent implements OnInit {
       );
   }
 
-  navigateToCodeletDetails(snippet: Codelet, queryParams: Params): void {
+  navigateToCodeletDetails(snippet: Snippet, queryParams: Params): void {
     const link = [`./my-snippets/${snippet._id}/details`];
     this.router.navigate(link, {
       state: {snippet: snippet},

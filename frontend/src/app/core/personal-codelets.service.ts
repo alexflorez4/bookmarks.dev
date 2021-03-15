@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Codelet } from './model/codelet';
+import { Snippet } from './model/snippet';
 
 @Injectable()
 export class PersonalCodeletsService {
@@ -19,8 +19,8 @@ export class PersonalCodeletsService {
     this.personalCodeletsApiBaseUrl = environment.API_URL + '/personal/users';
   }
 
-  getPersonalCodeletById(userId: string, codeletId: string): Observable<Codelet> {
-    return this.httpClient.get<Codelet>(`${this.personalCodeletsApiBaseUrl}/${userId}/codelets/${codeletId}`).pipe(shareReplay(1));
+  getPersonalCodeletById(userId: string, codeletId: string): Observable<Snippet> {
+    return this.httpClient.get<Snippet>(`${this.personalCodeletsApiBaseUrl}/${userId}/codelets/${codeletId}`).pipe(shareReplay(1));
   }
 
   getSuggestedCodeletTags(userId: String): Observable<string[]> {
@@ -28,7 +28,7 @@ export class PersonalCodeletsService {
       .pipe(shareReplay(1));
   }
 
-  updateCodelet(codelet: Codelet): Observable<any> {
+  updateCodelet(codelet: Snippet): Observable<any> {
     return this.httpClient
       .put(`${this.personalCodeletsApiBaseUrl}/${codelet.userId}/codelets/${codelet._id}`, JSON.stringify(codelet),
         {headers: this.headers})
@@ -36,7 +36,7 @@ export class PersonalCodeletsService {
   }
 
 
-  createCodelet(userId: string, codelet: Codelet): Observable<any> {
+  createCodelet(userId: string, codelet: Snippet): Observable<any> {
     return this.httpClient
       .post(`${this.personalCodeletsApiBaseUrl}/${userId}/codelets`, JSON.stringify(codelet), {
         headers: this.headers,
@@ -66,13 +66,13 @@ export class PersonalCodeletsService {
       .set('limit', limit.toString())
       .set('include', include);
 
-    return this.httpClient.get<Codelet[]>(`${this.personalCodeletsApiBaseUrl}/${userId}/codelets`,
+    return this.httpClient.get<Snippet[]>(`${this.personalCodeletsApiBaseUrl}/${userId}/codelets`,
       {params: params})
       .pipe(shareReplay(1));
   }
 
   getLatestSnippets(userId: string) {
-    return this.httpClient.get<Codelet[]>(`${this.personalCodeletsApiBaseUrl}/${userId}/codelets`)
+    return this.httpClient.get<Snippet[]>(`${this.personalCodeletsApiBaseUrl}/${userId}/codelets`)
       .pipe(shareReplay(1));
   }
 }

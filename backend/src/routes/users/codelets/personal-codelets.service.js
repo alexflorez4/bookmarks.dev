@@ -59,7 +59,7 @@ let updateCodelet = async (userId, codeletId, codeletData) => {
 
   const codeletNotFound = !updatedCodelet;
   if ( codeletNotFound ) {
-    throw new NotFoundError('Codelet NOT_FOUND with id: ' + codeletId + ' AND title: ' + codeletData.title);
+    throw new NotFoundError('Snippet NOT_FOUND with id: ' + codeletId + ' AND title: ' + codeletData.title);
   } else {
     return updatedCodelet;
   }
@@ -75,7 +75,7 @@ let deleteCodeletById = async (userId, codeletId) => {
   });
 
   if ( !codelet ) {
-    throw new NotFoundError('Codelet NOT_FOUND with id: ' + codeletId);
+    throw new NotFoundError('Snippet NOT_FOUND with id: ' + codeletId);
   }
 };
 

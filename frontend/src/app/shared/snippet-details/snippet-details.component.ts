@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Codelet } from '../../core/model/codelet';
+import { Snippet } from '../../core/model/snippet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonalCodeletsService } from '../../core/personal-codelets.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
@@ -17,7 +17,7 @@ import { LoginRequiredDialogComponent } from '../login-required-dialog/login-req
 export class SnippetDetailsComponent implements OnInit {
 
   @Input()
-  snippet$: Observable<Codelet>;
+  snippet$: Observable<Snippet>;
 
   userIsLoggedIn = false;
 
@@ -68,13 +68,13 @@ export class SnippetDetailsComponent implements OnInit {
     document.body.removeChild(selBox);
   }
 
-  editCodelet(snippet: Codelet) {
+  editCodelet(snippet: Snippet) {
     const link = [`/my-snippets/${snippet._id}/edit`];
     this.router.navigate(link, {state: {codelet: snippet}});
   }
 
 
-  copyToMine(snippet: Codelet): void {
+  copyToMine(snippet: Snippet): void {
     if (!this.userIsLoggedIn) {
       const dialogConfig = new MatDialogConfig();
 

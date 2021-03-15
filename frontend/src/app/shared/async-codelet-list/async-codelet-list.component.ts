@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Codelet } from '../../core/model/codelet';
+import { Snippet } from '../../core/model/snippet';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { PaginationAction } from '../../core/model/pagination-action';
@@ -15,7 +15,7 @@ import { environment } from '../../../environments/environment';
 export class AsyncCodeletListComponent implements OnInit, OnChanges {
 
   @Input()
-  codelets$: Observable<Codelet[]>;
+  codelets$: Observable<Snippet[]>;
 
   @Input()
   queryText: string; // used for highlighting search terms in the bookmarks list
@@ -47,7 +47,7 @@ export class AsyncCodeletListComponent implements OnInit, OnChanges {
     }
   }
 
-  of(codelet: Codelet) {
+  of(codelet: Snippet) {
     return of(codelet);
   }
 

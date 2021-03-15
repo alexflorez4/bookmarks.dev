@@ -6,7 +6,7 @@ import { PersonalBookmarksService } from '../core/personal-bookmarks.service';
 import { PersonalCodeletsService } from '../core/personal-codelets.service';
 import { Observable } from 'rxjs';
 import { Bookmark } from '../core/model/bookmark';
-import { Codelet } from '../core/model/codelet';
+import { Snippet } from '../core/model/snippet';
 import { SearchNotificationService } from '../core/search-notification.service';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakServiceWrapper } from '../core/keycloak-service-wrapper.service';
@@ -37,7 +37,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   userId: string;
   userIsLoggedIn = false;
 
-  searchResults$: Observable<Bookmark[] | Codelet[]>;
+  searchResults$: Observable<Bookmark[] | Snippet[]>;
   private userData$: Observable<UserData>;
 
   selectedTabIndex = 1; // default search in public bookmarks

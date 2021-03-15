@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Codelet } from '../../core/model/codelet';
+import { Snippet } from '../../core/model/snippet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonalCodeletsService } from '../../core/personal-codelets.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
@@ -12,7 +12,7 @@ import { UserInfoStore } from '../../core/user/user-info.store';
 })
 export class SnippetDetailsPageComponent implements OnInit {
 
-  snippet$: Observable<Codelet>;
+  snippet$: Observable<Snippet>;
   codeletId: string;
   userId: string;
 

@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorService } from '../../core/error/error.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
 import { SuggestedTagsStore } from '../../core/user/suggested-tags.store';
-import { Codelet } from '../../core/model/codelet';
+import { Snippet } from '../../core/model/snippet';
 import { PersonalCodeletsService } from '../../core/personal-codelets.service';
 import { DeleteCodeletDialogComponent } from '../delete-codelet-dialog/delete-codelet-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -25,7 +25,7 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
   userId = null;
 
   @Input()
-  codelet: Codelet;
+  codelet: Snippet;
 
   @ViewChild('tagInput', {static: false})
   tagInput: ElementRef;
@@ -63,7 +63,7 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
     super.ngOnInit();
   }
 
-  private patchFormWithData(codelet: Codelet) {
+  private patchFormWithData(codelet: Snippet) {
     this.codeletFormGroup.patchValue(codelet);
     if (this.copyToMine) {
       this.codelet.public = false;
@@ -97,7 +97,7 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
     this.codeSnippetsFormArray = this.codeletFormGroup.get('codeSnippets') as FormArray;
   }
 
-  saveCodelet(codelet: Codelet) {
+  saveCodelet(codelet: Snippet) {
     if (this.copyToMine) {
       super.createCodelet(codelet, this.copyToMine, null);
     } else {
@@ -105,7 +105,7 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
     }
   }
 
-  updateCodelet(codelet: Codelet): void {
+  updateCodelet(codelet: Snippet): void {
     const now = new Date();
     codelet.updatedAt = now;
     codelet.lastAccessedAt = now;

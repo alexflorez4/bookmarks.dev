@@ -28,7 +28,7 @@ personalCodeletsRouter.post('/', keycloak.protect(), async (request, response) =
   response
     .set('Location', `${config.basicApiUrl}/personal/users/${request.params.userId}/bookmarks/${newSnippet.id}`)
     .status(HttpStatus.CREATED)
-    .send({response: 'Codelet created for userId ' + request.params.userId});
+    .send({response: 'Snippet created for userId ' + request.params.userId});
 
 });
 

@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Codelet } from '../../../core/model/codelet';
+import { Snippet } from '../../../core/model/snippet';
 import { PersonalCodeletsService } from '../../../core/personal-codelets.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PersonalCodeletsService } from '../../../core/personal-codelets.service
 })
 export class MySnippetsComponent implements OnChanges {
 
-  mySnippets$: Observable<Codelet[]>;
+  mySnippets$: Observable<Snippet[]>;
 
   @Input()
   userId: string;

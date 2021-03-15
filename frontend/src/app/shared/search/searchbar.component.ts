@@ -16,7 +16,7 @@ import { KeycloakServiceWrapper } from '../../core/keycloak-service-wrapper.serv
 import { UserInfoStore } from '../../core/user/user-info.store';
 import { PaginationNotificationService } from '../../core/pagination-notification.service';
 import { LoginRequiredDialogComponent } from '../login-required-dialog/login-required-dialog.component';
-import { Codelet } from '../../core/model/codelet';
+import { Snippet } from '../../core/model/snippet';
 import { PersonalCodeletsService } from '../../core/personal-codelets.service';
 import { SearchNotificationService } from '../../core/search-notification.service';
 import { SearchDomain } from '../../core/model/search-domain.enum';

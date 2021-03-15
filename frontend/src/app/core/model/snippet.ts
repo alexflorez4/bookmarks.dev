@@ -1,4 +1,4 @@
-export interface Codelet {
+export interface Snippet {
   _id?: string;
   title: string;
   codeSnippets: CodeSnippet[];

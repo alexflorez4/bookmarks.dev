@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Codelet } from '../../core/model/codelet';
+import { Snippet } from '../../core/model/snippet';
 import { PublicSnippetsService } from '../../public/snippets/public-snippets.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { PublicSnippetsService } from '../../public/snippets/public-snippets.ser
 })
 export class CopyToMineSnippetComponent implements OnInit {
 
-  snippet: Codelet;
+  snippet: Snippet;
 
   constructor(private route: ActivatedRoute,
               private publicSnippetsService: PublicSnippetsService) {

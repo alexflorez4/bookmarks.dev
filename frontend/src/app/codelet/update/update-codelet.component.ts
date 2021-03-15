@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserInfoStore } from '../../core/user/user-info.store';
 import { Observable, of } from 'rxjs';
-import { Codelet } from '../../core/model/codelet';
+import { Snippet } from '../../core/model/snippet';
 import { PersonalCodeletsService } from '../../core/personal-codelets.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { PersonalCodeletsService } from '../../core/personal-codelets.service';
 })
 export class UpdateCodeletComponent implements OnInit {
 
-  snippet: Codelet;
+  snippet: Snippet;
   snippetId: string;
   userId: string;
 
