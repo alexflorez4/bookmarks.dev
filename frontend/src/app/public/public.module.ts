@@ -11,7 +11,7 @@ import { PrivacyPolicyComponent } from './privacy/privacy-policy.component';
 import { TermsOfServiceComponent } from './terms/terms-of-service.component';
 import { UserPublicProfileComponent } from './user-public-profile/user-public-profile.component';
 import { UserPublicService } from './user-public-profile/user-public.service';
-import { CodeletModule } from '../codelet/codelet.module';
+import { SnippetsModule } from '../snippets/snippets.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
@@ -41,7 +41,7 @@ import { SnippetTagService } from './snippets/tag/snippet-tag.service';
     MatTabsModule,
     MatAutocompleteModule,
     MatSelectModule,
-    CodeletModule
+    SnippetsModule
   ],
   providers: [
     PublicBookmarksService,

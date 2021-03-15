@@ -7,10 +7,10 @@ import { PersonalCodeletsService } from '../../core/personal-codelets.service';
 
 @Component({
   selector: 'app-update-snippet',
-  templateUrl: './update-codelet.component.html',
-  styleUrls: ['./update-codelet.component.scss']
+  templateUrl: './update-snippet.component.html',
+  styleUrls: ['./update-snippet.component.scss']
 })
-export class UpdateCodeletComponent implements OnInit {
+export class UpdateSnippetComponent implements OnInit {
 
   snippet: Snippet;
   snippetId: string;

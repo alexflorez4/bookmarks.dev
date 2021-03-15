@@ -5,16 +5,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-bookmark-dialog',
-  templateUrl: './delete-codelet-dialog.component.html',
-  styleUrls: ['./delete-codelet-dialog.component.scss']
+  templateUrl: './delete-snippet-dialog.component.html',
+  styleUrls: ['./delete-snippet-dialog.component.scss']
 })
-export class DeleteCodeletDialogComponent implements OnInit {
+export class DeleteSnippetDialogComponent implements OnInit {
 
   codeletTitle: string;
   userData$: Observable<UserData>;
 
   constructor(
-    private dialogRef: MatDialogRef<DeleteCodeletDialogComponent>,
+    private dialogRef: MatDialogRef<DeleteSnippetDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.codeletTitle = data.codeletTitle;

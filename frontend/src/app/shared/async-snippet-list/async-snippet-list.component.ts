@@ -1,18 +1,17 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Snippet } from '../../core/model/snippet';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { PaginationAction } from '../../core/model/pagination-action';
 import { PaginationNotificationService } from '../../core/pagination-notification.service';
-import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-async-codelet-list',
-  templateUrl: './async-codelet-list.component.html',
-  styleUrls: ['./async-codelet-list.component.scss']
+  templateUrl: './async-snippet-list.component.html',
+  styleUrls: ['./async-snippet-list.component.scss']
 })
-export class AsyncCodeletListComponent implements OnInit, OnChanges {
+export class AsyncSnippetListComponent implements OnInit, OnChanges {
 
   @Input()
   codelets$: Observable<Snippet[]>;

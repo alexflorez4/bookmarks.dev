@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsyncCodeletListComponent } from './async-codelet-list.component';
+import { AsyncSnippetListComponent } from './async-snippet-list.component';
 
 describe('AsyncCodeletListComponent', () => {
-  let component: AsyncCodeletListComponent;
-  let fixture: ComponentFixture<AsyncCodeletListComponent>;
+  let component: AsyncSnippetListComponent;
+  let fixture: ComponentFixture<AsyncSnippetListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AsyncCodeletListComponent ]
+      declarations: [ AsyncSnippetListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AsyncCodeletListComponent);
+    fixture = TestBed.createComponent(AsyncSnippetListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

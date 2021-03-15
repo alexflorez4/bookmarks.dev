@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'my-snippets',
-    loadChildren: () => import('app/codelet/codelet.module').then(m => m.CodeletModule)
+    loadChildren: () => import('app/snippets/snippets.module').then(m => m.SnippetsModule)
   },
   {
     path: 'my-codelets',

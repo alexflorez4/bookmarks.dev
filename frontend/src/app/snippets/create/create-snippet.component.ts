@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-personal-bookmark-form',
-  templateUrl: './create-codelet.component.html',
-  styleUrls: ['./create-codelet.component.scss']
+  templateUrl: './create-snippet.component.html',
+  styleUrls: ['./create-snippet.component.scss']
 })
-export class CreateCodeletComponent implements OnInit {
+export class CreateSnippetComponent implements OnInit {
 
   title; // value of "title" query parameter if present
   code; // value of "desc" query parameter if present

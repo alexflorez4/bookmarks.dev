@@ -8,7 +8,7 @@ import { UserInfoStore } from '../../core/user/user-info.store';
 import { SuggestedTagsStore } from '../../core/user/suggested-tags.store';
 import { Snippet } from '../../core/model/snippet';
 import { PersonalCodeletsService } from '../../core/personal-codelets.service';
-import { DeleteCodeletDialogComponent } from '../delete-codelet-dialog/delete-codelet-dialog.component';
+import { DeleteSnippetDialogComponent } from '../delete-snippet-dialog/delete-snippet-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PublicSnippetsService } from '../../public/snippets/public-snippets.service';
 import { SnippetFormBaseComponent } from '../snippet-form-base/snippet-form.base.component';
@@ -130,7 +130,7 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
       codeletTitle: this.codelet.title,
     };
 
-    const dialogRef = this.deleteDialog.open(DeleteCodeletDialogComponent, dialogConfig);
+    const dialogRef = this.deleteDialog.open(DeleteSnippetDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
         if (data === 'DELETE_CONFIRMED') {

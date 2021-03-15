@@ -3,12 +3,12 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateSnippetFormComponent } from './create-snippet-form/create-snippet-form.component';
 import { PersonalCodeletsService } from '../core/personal-codelets.service';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateCodeletComponent } from './create/create-codelet.component';
-import { UpdateCodeletComponent } from './update/update-codelet.component';
+import { CreateSnippetComponent } from './create/create-snippet.component';
+import { UpdateSnippetComponent } from './update/update-snippet.component';
 import { AuthGuard } from '../core/auth/auth-guard.service';
 import { SnippetDetailsPageComponent } from './snippet-details-page/snippet-details-page.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule, HighlightOptions } from 'ngx-highlightjs';
-import { DeleteCodeletDialogComponent } from './delete-codelet-dialog/delete-codelet-dialog.component';
+import { DeleteSnippetDialogComponent } from './delete-snippet-dialog/delete-snippet-dialog.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
@@ -17,14 +17,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CopyToMineSnippetComponent } from './copy-to-mine/copy-to-mine-snippet.component';
-import { UpdateSnippetFormComponent } from './update-codelet-form/update-snippet-form.component';
+import { UpdateSnippetFormComponent } from './update-snippet-form/update-snippet-form.component';
 import { SnippetFormBaseComponent } from './snippet-form-base/snippet-form.base.component';
 
 const codeletRoutes: Routes = [
   {
     path: 'new',
     canActivate: [AuthGuard],
-    component: CreateCodeletComponent,
+    component: CreateSnippetComponent,
   },
   {
     path: ':id/copy-to-mine',
@@ -34,7 +34,7 @@ const codeletRoutes: Routes = [
   {
     path: ':id/edit',
     canActivate: [AuthGuard],
-    component: UpdateCodeletComponent,
+    component: UpdateSnippetComponent,
   },
   {
     path: ':id/details',
@@ -47,10 +47,10 @@ const codeletRoutes: Routes = [
   declarations: [
     CreateSnippetFormComponent,
     UpdateSnippetFormComponent,
-    CreateCodeletComponent,
-    UpdateCodeletComponent,
+    CreateSnippetComponent,
+    UpdateSnippetComponent,
     SnippetDetailsPageComponent,
-    DeleteCodeletDialogComponent,
+    DeleteSnippetDialogComponent,
     CopyToMineSnippetComponent,
     SnippetFormBaseComponent
   ],
@@ -76,8 +76,8 @@ const codeletRoutes: Routes = [
     }
   ],
   entryComponents: [
-    DeleteCodeletDialogComponent
+    DeleteSnippetDialogComponent
   ]
 })
-export class CodeletModule {
+export class SnippetsModule {
 }
