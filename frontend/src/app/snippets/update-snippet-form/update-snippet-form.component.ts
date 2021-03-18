@@ -7,7 +7,7 @@ import { ErrorService } from '../../core/error/error.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
 import { SuggestedTagsStore } from '../../core/user/suggested-tags.store';
 import { Snippet } from '../../core/model/snippet';
-import { PersonalCodeletsService } from '../../core/personal-codelets.service';
+import { PersonalSnippetsService } from '../../core/personal-snippets.service';
 import { DeleteSnippetDialogComponent } from '../delete-snippet-dialog/delete-snippet-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PublicSnippetsService } from '../../public/snippets/public-snippets.service';
@@ -20,12 +20,12 @@ import { SnippetFormBaseComponent } from '../snippet-form-base/snippet-form.base
 })
 export class UpdateSnippetFormComponent extends SnippetFormBaseComponent implements OnInit, OnChanges {
 
-  codeletFormGroup: FormGroup;
+  snippetFormGroup: FormGroup;
   codeSnippetsFormArray: FormArray;
   userId = null;
 
   @Input()
-  codelet: Snippet;
+  snippet: Snippet;
 
   @ViewChild('tagInput', {static: false})
   tagInput: ElementRef;
@@ -38,7 +38,7 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
 
   constructor(
     protected formBuilder: FormBuilder,
-    protected personalCodeletsService: PersonalCodeletsService,
+    protected personalSnippetsService: PersonalSnippetsService,
     private publicSnippetsService: PublicSnippetsService,
     protected suggestedTagsStore: SuggestedTagsStore,
     protected userInfoStore: UserInfoStore,
@@ -48,14 +48,14 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
     protected errorService: ErrorService,
     private deleteDialog: MatDialog
   ) {
-    super(formBuilder, personalCodeletsService, suggestedTagsStore, userInfoStore, router, errorService);
+    super(formBuilder, personalSnippetsService, suggestedTagsStore, userInfoStore, router, errorService);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // only run when property "codelet" changed
-    if (this.codelet) {
+    // only run when property "snippet" changed
+    if (this.snippet) {
       this.buildInitialForm();
-      this.patchFormWithData(this.codelet);
+      this.patchFormWithData(this.snippet);
     }
   }
 
@@ -64,15 +64,15 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
   }
 
   private patchFormWithData(codelet: Snippet) {
-    this.codeletFormGroup.patchValue(codelet);
+    this.snippetFormGroup.patchValue(codelet);
     if (this.copyToMine) {
-      this.codelet.public = false;
-      this.codeletFormGroup.get('public').setValue(false);
-      this.codeletFormGroup.get('copiedFromId').setValue(codelet._id);
+      this.snippet.public = false;
+      this.snippetFormGroup.get('public').setValue(false);
+      this.snippetFormGroup.get('copiedFromId').setValue(codelet._id);
     }
 
-    for (let i = 0; i < this.codelet.tags.length; i++) {
-      this.formArrayTags.push(this.formBuilder.control(this.codelet.tags[i]));
+    for (let i = 0; i < this.snippet.tags.length; i++) {
+      this.formArrayTags.push(this.formBuilder.control(this.snippet.tags[i]));
     }
 
     this.codeSnippetsFormArray.removeAt(0); // there is an empty element created when building form - needs removing
@@ -85,7 +85,7 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
   }
 
   buildInitialForm(): void {
-    this.codeletFormGroup = this.formBuilder.group({
+    this.snippetFormGroup = this.formBuilder.group({
       title: ['', Validators.required],
       tags: this.formBuilder.array([], [tagsValidator, Validators.required]),
       codeSnippets: new FormArray([this.createInitialCodeSnippet()]),
@@ -94,30 +94,30 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
       copiedFromId: null
     });
 
-    this.codeSnippetsFormArray = this.codeletFormGroup.get('codeSnippets') as FormArray;
+    this.codeSnippetsFormArray = this.snippetFormGroup.get('codeSnippets') as FormArray;
   }
 
-  saveCodelet(codelet: Snippet) {
+  saveSnippet(codelet: Snippet) {
     if (this.copyToMine) {
       super.createCodelet(codelet, this.copyToMine, null);
     } else {
-      this.updateCodelet(codelet);
+      this.updateSnippet(codelet);
     }
   }
 
-  updateCodelet(codelet: Snippet): void {
+  updateSnippet(snippet: Snippet): void {
     const now = new Date();
-    codelet.updatedAt = now;
-    codelet.lastAccessedAt = now;
-    codelet.userId = this.codelet.userId;
-    codelet._id = this.codelet._id;
+    snippet.updatedAt = now;
+    snippet.lastAccessedAt = now;
+    snippet.userId = this.snippet.userId;
+    snippet._id = this.snippet._id;
 
-    this.personalCodeletsService.updateCodelet(codelet)
+    this.personalSnippetsService.updateSnippet(snippet)
       .subscribe(
         () => {
-          super.navigateToCodeletDetails(codelet, {})
+          super.navigateToSnippetDetails(snippet, {})
         },
-        () => this.navigateToCodeletDetails(codelet, {})
+        () => this.navigateToSnippetDetails(snippet, {})
       );
   }
 
@@ -127,22 +127,22 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      codeletTitle: this.codelet.title,
+      codeletTitle: this.snippet.title,
     };
 
     const dialogRef = this.deleteDialog.open(DeleteSnippetDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
         if (data === 'DELETE_CONFIRMED') {
-          this.deleteCodelet(this.codelet._id);
+          this.deleteCodelet(this.snippet._id);
         }
       }
     );
   }
 
   deleteCodelet(codeletId: string) {
-    this.personalCodeletsService.deleteCodeletById(this.userId, codeletId).subscribe(() => {
-      console.log('Delete codelet with id - ' + codeletId);
+    this.personalSnippetsService.deleteSnippetById(this.userId, codeletId).subscribe(() => {
+      console.log('Delete snippet with id - ' + codeletId);
       this.router.navigate(
         ['']
       );

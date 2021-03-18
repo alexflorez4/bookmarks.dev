@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import { HowtoSearchComponent } from './howto-search/howto-search.component';
 import { HowtoSaveComponent } from './howto-save/howto-save.component';
 import { HowToBookmarkletComponent } from './howto-bookmarklets/how-to-bookmarklet.component';
-import { HowToCodeletComponent } from './howto-codelets/how-to-codelet.component';
+import { HowToSnippetComponent } from './howto-snippets/how-to-snippet.component';
 import { HowtoComponent } from './howto.component';
 import { HowtoGetStartedComponent } from './howto-get-started/howto-get-started.component';
 import { HowtoHotkeysComponent } from './howto-hotkeys/howto-hotkeys.component';
@@ -31,7 +31,7 @@ const howToRoutes: Routes = [
   },
   {
     path: 'snippets',
-    component: HowToCodeletComponent
+    component: HowToSnippetComponent
   },
   {
     path: 'codelets',

@@ -35,7 +35,7 @@ personalCodeletsRouter.post('/', keycloak.protect(), async (request, response) =
 /**
  * GET suggested tags used by user
  *
- * Order matters - needs to be GET codelet by id
+ * Order matters - needs to be GET snippet by id
  **/
 personalCodeletsRouter.get('/suggested-tags', keycloak.protect(), async (request, response) => {
   UserIdValidator.validateUserId(request);
@@ -80,7 +80,7 @@ personalCodeletsRouter.get('/', keycloak.protect(), async (request, response) =>
   return response.status(HttpStatus.OK).send(snippets);
 });
 
-/* GET codelet of user */
+/* GET snippet of user */
 personalCodeletsRouter.get('/:snippetId', keycloak.protect(), async (request, response) => {
   UserIdValidator.validateUserId(request);
 

@@ -3,10 +3,10 @@ import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-howto-codelets',
-  templateUrl: './how-to-codelet.component.html',
-  styleUrls: ['./how-to-codelet.component.scss']
+  templateUrl: './how-to-snippet.component.html',
+  styleUrls: ['./how-to-snippet.component.scss']
 })
-export class HowToCodeletComponent implements OnInit {
+export class HowToSnippetComponent implements OnInit {
 
   environment = environment;
 

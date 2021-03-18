@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Snippet } from '../../../core/model/snippet';
-import { PersonalCodeletsService } from '../../../core/personal-codelets.service';
+import { PersonalSnippetsService } from '../../../core/personal-snippets.service';
 
 @Component({
   selector: 'app-my-snippets',
@@ -14,7 +14,7 @@ export class MySnippetsComponent implements OnChanges {
   @Input()
   userId: string;
 
-  constructor(private personalSnippetsService: PersonalCodeletsService) {
+  constructor(private personalSnippetsService: PersonalSnippetsService) {
   }
 
   ngOnChanges() {

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserInfoStore } from '../../core/user/user-info.store';
-import { Observable, of } from 'rxjs';
 import { Snippet } from '../../core/model/snippet';
-import { PersonalCodeletsService } from '../../core/personal-codelets.service';
+import { PersonalSnippetsService } from '../../core/personal-snippets.service';
 
 @Component({
   selector: 'app-update-snippet',
@@ -17,7 +16,7 @@ export class UpdateSnippetComponent implements OnInit {
   userId: string;
 
   constructor(private route: ActivatedRoute,
-              private personalCodeletsService: PersonalCodeletsService,
+              private personalCodeletsService: PersonalSnippetsService,
               private userInfoStore: UserInfoStore) {
 
   }
@@ -28,7 +27,7 @@ export class UpdateSnippetComponent implements OnInit {
       this.snippet = window.history.state.codelet;
       if (!window.history.state.codelet) {
         this.snippetId = this.route.snapshot.paramMap.get('id');
-        this.personalCodeletsService.getPersonalCodeletById(this.userId, this.snippetId).subscribe(snippet =>
+        this.personalCodeletsService.getPersonalSnippetById(this.userId, this.snippetId).subscribe(snippet =>
           this.snippet = snippet
         );
       }

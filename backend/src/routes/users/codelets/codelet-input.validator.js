@@ -10,7 +10,7 @@ let validateCodeletInput = function(userId, codelet) {
   }
 
   if (codelet.userId !== userId) {
-    validationErrorMessages.push("The userId of the codelet does not match the userId parameter");
+    validationErrorMessages.push("The userId of the snippet does not match the userId parameter");
   }
 
   if (!codelet.title) {
@@ -40,7 +40,7 @@ let validateCodeletInput = function(userId, codelet) {
   }
 
   if(validationErrorMessages.length > 0){
-    throw new ValidationError('The codelet you submitted is not valid', validationErrorMessages);
+    throw new ValidationError('The snippet you submitted is not valid', validationErrorMessages);
   }
 }
 

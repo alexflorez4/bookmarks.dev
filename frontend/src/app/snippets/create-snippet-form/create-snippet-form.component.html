@@ -1,12 +1,12 @@
 <div class="navigation-space-buffer rounded bg-white shadow-sm">
-  <form [formGroup]="codeletFormGroup" novalidate (ngSubmit)="createCodelet(codeletFormGroup.value, false, popup)">
+  <form [formGroup]="snippetFormGroup" novalidate (ngSubmit)="createCodelet(snippetFormGroup.value, false, popup)">
     <div class="form-group pb-1">
       <label for="title">Title*</label>
       <input type="text" class="form-control" id="title"
              required
              formControlName="title"
              placeholder="Title of code snippet(s) to recognize later">
-      <div [hidden]="codeletFormGroup.get('title').valid || (codeletFormGroup.get('title').pristine)"
+      <div [hidden]="snippetFormGroup.get('title').valid || (snippetFormGroup.get('title').pristine)"
            class="alert alert-danger">
         Title is required
       </div>
@@ -132,8 +132,8 @@
     </div>
 
     <button type="submit" class="btn btn-primary mr-2"
-            [disabled]="!codeletFormGroup.valid">
-      <span *ngIf="codeletFormGroup.get('public').value; else textBtnPrivateSnippet">Create <strong>public</strong> snippet <i
+            [disabled]="!snippetFormGroup.valid">
+      <span *ngIf="snippetFormGroup.get('public').value; else textBtnPrivateSnippet">Create <strong>public</strong> snippet <i
         class="far fa-eye"></i></span>
       <ng-template #textBtnPrivateSnippet>
         <span>Create <strong>private</strong> snippet <i class="far fa-eye-slash"></i></span>

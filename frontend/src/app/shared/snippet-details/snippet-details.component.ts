@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Snippet } from '../../core/model/snippet';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PersonalCodeletsService } from '../../core/personal-codelets.service';
+import { PersonalSnippetsService } from '../../core/personal-snippets.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
 import { PublicSnippetsService } from '../../public/snippets/public-snippets.service';
 import { KeycloakService } from 'keycloak-angular';
@@ -33,7 +33,7 @@ export class SnippetDetailsComponent implements OnInit {
 
   constructor(
     public loginDialog: MatDialog,
-    private personalCodeletsService: PersonalCodeletsService,
+    private personalCodeletsService: PersonalSnippetsService,
     private publicSnippetsService: PublicSnippetsService,
     private keycloakService: KeycloakService,
     private userInfoStore: UserInfoStore,

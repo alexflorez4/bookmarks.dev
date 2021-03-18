@@ -10,14 +10,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class DeleteSnippetDialogComponent implements OnInit {
 
-  codeletTitle: string;
+  snippetTitle: string;
   userData$: Observable<UserData>;
 
   constructor(
     private dialogRef: MatDialogRef<DeleteSnippetDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
-    this.codeletTitle = data.codeletTitle;
+    this.snippetTitle = data.codeletTitle;
   }
 
   ngOnInit() {

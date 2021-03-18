@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { PublicBookmarksService } from '../public/bookmarks/public-bookmarks.service';
 import { PersonalBookmarksService } from '../core/personal-bookmarks.service';
-import { PersonalCodeletsService } from '../core/personal-codelets.service';
+import { PersonalSnippetsService } from '../core/personal-snippets.service';
 import { Observable } from 'rxjs';
 import { Bookmark } from '../core/model/bookmark';
 import { Snippet } from '../core/model/snippet';
@@ -50,7 +50,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
               private publicBookmarksService: PublicBookmarksService,
               private publicSnippetsService: PublicSnippetsService,
               private personalBookmarksService: PersonalBookmarksService,
-              private personalCodeletsService: PersonalCodeletsService,
+              private personalCodeletsService: PersonalSnippetsService,
               private keycloakService: KeycloakService,
               private keycloakServiceWrapper: KeycloakServiceWrapper,
               private userInfoStore: UserInfoStore,
@@ -152,7 +152,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
         break;
       }
       case SearchDomain.MY_SNIPPETS : {
-        this.searchResults$ = this.personalCodeletsService.getFilteredPersonalCodelets(
+        this.searchResults$ = this.personalCodeletsService.getFilteredPersonalSnippets(
           searchText,
           environment.PAGINATION_PAGE_SIZE,
           this.currentPage,

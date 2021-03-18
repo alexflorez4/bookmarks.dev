@@ -99,7 +99,7 @@
 
 ### Bug Fixes
 
-* remove unused pipe in codelet-details.component.html ([8f94094](https://github.com/BookmarksDev/bookmarks.dev/commit/8f9409432829d2cc4a53544766714ff359fc3304))
+* remove unused pipe in snippet-details.component.html ([8f94094](https://github.com/BookmarksDev/bookmarks.dev/commit/8f9409432829d2cc4a53544766714ff359fc3304))
 
 
 ### Features

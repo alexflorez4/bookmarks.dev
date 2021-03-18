@@ -5,7 +5,7 @@ const NotFoundError = require('../../../error/not-found.error');
 const CodeletInputValidator = require('./codelet-input.validator');
 
 /**
- * CREATE codelet for user
+ * CREATE snippet for user
  */
 let createCodelet = async function (userId, codeletData) {
   CodeletInputValidator.validateCodeletInput(userId, codeletData);
@@ -66,7 +66,7 @@ let updateCodelet = async (userId, codeletId, codeletData) => {
 };
 
 /*
-* DELETE codelet for user
+* DELETE snippet for user
 */
 let deleteCodeletById = async (userId, codeletId) => {
   const codelet = await Codelet.findOneAndRemove({

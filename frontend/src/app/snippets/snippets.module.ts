@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { CreateSnippetFormComponent } from './create-snippet-form/create-snippet-form.component';
-import { PersonalCodeletsService } from '../core/personal-codelets.service';
+import { PersonalSnippetsService } from '../core/personal-snippets.service';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateSnippetComponent } from './create/create-snippet.component';
 import { UpdateSnippetComponent } from './update/update-snippet.component';
@@ -67,7 +67,7 @@ const codeletRoutes: Routes = [
     HighlightModule
   ],
   providers: [
-    PersonalCodeletsService,
+    PersonalSnippetsService,
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: <HighlightOptions>{

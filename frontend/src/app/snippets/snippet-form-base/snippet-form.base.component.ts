@@ -13,7 +13,7 @@ import { Params, Router } from '@angular/router';
 import { textSizeValidator } from '../../core/validators/text-size.validator';
 import { HttpResponse } from '@angular/common/http';
 import { throwError as observableThrowError } from 'rxjs/internal/observable/throwError';
-import { PersonalCodeletsService } from '../../core/personal-codelets.service';
+import { PersonalSnippetsService } from '../../core/personal-snippets.service';
 import { ErrorService } from '../../core/error/error.service';
 
 
@@ -22,7 +22,7 @@ import { ErrorService } from '../../core/error/error.service';
 })
 export class SnippetFormBaseComponent implements OnInit {
 
-  codeletFormGroup: FormGroup;
+  snippetFormGroup: FormGroup;
   codeSnippetsFormArray: FormArray;
   userId = null;
 
@@ -45,14 +45,14 @@ export class SnippetFormBaseComponent implements OnInit {
   filteredTags: Observable<any[]>;
 
   @Input()
-  codelet: Snippet;
+  snippet: Snippet;
 
   @ViewChild('tagInput', {static: false})
   tagInput: ElementRef;
 
   constructor(
     protected formBuilder: FormBuilder,
-    protected personalCodeletsService: PersonalCodeletsService,
+    protected personalSnippetsService: PersonalSnippetsService,
     protected suggestedTagsStore: SuggestedTagsStore,
     protected userInfoStore: UserInfoStore,
     protected router: Router,
@@ -121,7 +121,7 @@ export class SnippetFormBaseComponent implements OnInit {
   }
 
   get formArrayTags() {
-    return <FormArray>this.codeletFormGroup.get('tags');
+    return <FormArray>this.snippetFormGroup.get('tags');
   }
 
   createCodeSnippet(codeSnippet: CodeSnippet): FormGroup {
@@ -162,16 +162,16 @@ export class SnippetFormBaseComponent implements OnInit {
       codelet.createdAt = now
     }
 
-    this.personalCodeletsService.createCodelet(this.userId, codelet)
+    this.personalSnippetsService.createSnippet(this.userId, codelet)
       .subscribe(
         response => {
           const headers = response.headers;
-          // get the codelet id, which lies in the "location" response header
+          // get the snippet id, which lies in the "location" response header
           const lastSlashIndex = headers.get('location').lastIndexOf('/');
           const newCodeletId = headers.get('location').substring(lastSlashIndex + 1);
           codelet._id = newCodeletId;
           const queryParmas = popup ? {popup: popup} : {};
-          this.navigateToCodeletDetails(codelet, queryParmas)
+          this.navigateToSnippetDetails(codelet, queryParmas)
         },
         (error: HttpResponse<any>) => {
           this.errorService.handleError(error.body.json());
@@ -180,7 +180,7 @@ export class SnippetFormBaseComponent implements OnInit {
       );
   }
 
-  navigateToCodeletDetails(snippet: Snippet, queryParams: Params): void {
+  navigateToSnippetDetails(snippet: Snippet, queryParams: Params): void {
     const link = [`./my-snippets/${snippet._id}/details`];
     this.router.navigate(link, {
       state: {snippet: snippet},

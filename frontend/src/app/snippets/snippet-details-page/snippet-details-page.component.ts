@@ -1,19 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Snippet } from '../../core/model/snippet';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PersonalCodeletsService } from '../../core/personal-codelets.service';
+import { ActivatedRoute } from '@angular/router';
+import { PersonalSnippetsService } from '../../core/personal-snippets.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
 
 @Component({
-  selector: 'app-codelet-details',
+  selector: 'app-snippet-details-page',
   templateUrl: './snippet-details-page.component.html',
   styleUrls: ['./snippet-details-page.component.scss']
 })
 export class SnippetDetailsPageComponent implements OnInit {
 
   snippet$: Observable<Snippet>;
-  codeletId: string;
+  snippetId: string;
   userId: string;
 
   popup: string;
@@ -25,7 +25,7 @@ export class SnippetDetailsPageComponent implements OnInit {
   showCloseWindowBtn: boolean;
 
   constructor(
-    private personalCodeletsService: PersonalCodeletsService,
+    private personalSnippetsService: PersonalSnippetsService,
     private userInfoStore: UserInfoStore,
     private route: ActivatedRoute) {
 
@@ -37,8 +37,8 @@ export class SnippetDetailsPageComponent implements OnInit {
     if (!window.history.state.snippet) {
       this.userInfoStore.getUserInfo$().subscribe(userInfo => {
         this.userId = userInfo.sub;
-        this.codeletId = this.route.snapshot.paramMap.get('id');
-        this.snippet$ = this.personalCodeletsService.getPersonalCodeletById(this.userId, this.codeletId);
+        this.snippetId = this.route.snapshot.paramMap.get('id');
+        this.snippet$ = this.personalSnippetsService.getPersonalSnippetById(this.userId, this.snippetId);
       });
     }
   }

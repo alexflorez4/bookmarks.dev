@@ -9,7 +9,7 @@ import { ErrorService } from '../../core/error/error.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
 import { SuggestedTagsStore } from '../../core/user/suggested-tags.store';
 import { Snippet } from '../../core/model/snippet';
-import { PersonalCodeletsService } from '../../core/personal-codelets.service';
+import { PersonalSnippetsService } from '../../core/personal-snippets.service';
 import { textSizeValidator } from '../../core/validators/text-size.validator';
 import { WebpageInfoService } from '../../core/webpage-info/webpage-info.service';
 import { StackoverflowHelper } from '../../core/stackoverflow.helper';
@@ -23,7 +23,7 @@ import { SnippetFormBaseComponent } from '../snippet-form-base/snippet-form.base
 })
 export class CreateSnippetFormComponent extends SnippetFormBaseComponent implements OnInit {
 
-  codeletFormGroup: FormGroup;
+  snippetFormGroup: FormGroup;
   codeSnippetsFormArray: FormArray;
   userId = null;
 
@@ -33,7 +33,7 @@ export class CreateSnippetFormComponent extends SnippetFormBaseComponent impleme
   @ViewChild('tagInput', {static: false})
   tagInput: ElementRef;
 
-  codelet: Snippet;
+  snippet: Snippet;
 
   @Input()
   code; // value of "desc" query parameter if present
@@ -55,7 +55,7 @@ export class CreateSnippetFormComponent extends SnippetFormBaseComponent impleme
 
   constructor(
     protected formBuilder: FormBuilder,
-    protected personalCodeletsService: PersonalCodeletsService,
+    protected personalSnippetsService: PersonalSnippetsService,
     protected suggestedTagsStore: SuggestedTagsStore,
     protected userInfoStore: UserInfoStore,
     private userDataStore: UserDataStore,
@@ -66,13 +66,13 @@ export class CreateSnippetFormComponent extends SnippetFormBaseComponent impleme
     private webpageInfoService: WebpageInfoService,
     private stackoverflowHelper: StackoverflowHelper,
   ) {
-    super(formBuilder, personalCodeletsService, suggestedTagsStore, userInfoStore, router, errorService);
+    super(formBuilder, personalSnippetsService, suggestedTagsStore, userInfoStore, router, errorService);
   }
 
   ngOnInit(): void {
     super.ngOnInit();
     this.buildInitialForm();
-    this.codeSnippetsFormArray = this.codeletFormGroup.get('codeSnippets') as FormArray;
+    this.codeSnippetsFormArray = this.snippetFormGroup.get('codeSnippets') as FormArray;
 
     if (this.sourceUrl) {
       const stackoverflowQuestionId = this.stackoverflowHelper.getStackoverflowQuestionIdFromUrl(this.sourceUrl);
@@ -109,7 +109,7 @@ export class CreateSnippetFormComponent extends SnippetFormBaseComponent impleme
   }
 
   buildInitialForm(): void {
-    this.codeletFormGroup = this.formBuilder.group({
+    this.snippetFormGroup = this.formBuilder.group({
       title: [this.title ? this.title : '', Validators.required],
       tags: this.formBuilder.array([], [tagsValidator, Validators.required]),
       codeSnippets: new FormArray([this.createInitialCodeSnippet()]),
