@@ -3,7 +3,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AboutComponent } from './about/about.component';
 import { TagService } from './tag/tag.service';
 import { TagComponent } from './tag/tag.component';
-import { PublicBookmarksRoutingModule } from './public-routing.module';
+import { PublicRoutingModule } from './public-routing.module';
 import { HomepageComponent } from './bookmarks/homepage.component';
 import { PublicBookmarksStore } from './bookmarks/store/public-bookmarks-store.service';
 import { PublicBookmarksService } from './bookmarks/public-bookmarks.service';
@@ -11,7 +11,7 @@ import { PrivacyPolicyComponent } from './privacy/privacy-policy.component';
 import { TermsOfServiceComponent } from './terms/terms-of-service.component';
 import { UserPublicProfileComponent } from './user-public-profile/user-public-profile.component';
 import { UserPublicService } from './user-public-profile/user-public.service';
-import { SnippetsModule } from '../snippets/snippets.module';
+import { MySnippetsModule } from '../my-snippets/my-snippets.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
@@ -37,11 +37,11 @@ import { SnippetTagService } from './snippets/tag/snippet-tag.service';
   ],
   imports: [
     SharedModule,
-    PublicBookmarksRoutingModule,
+    PublicRoutingModule,
     MatTabsModule,
     MatAutocompleteModule,
     MatSelectModule,
-    SnippetsModule
+    MySnippetsModule
   ],
   providers: [
     PublicBookmarksService,
@@ -52,4 +52,4 @@ import { SnippetTagService } from './snippets/tag/snippet-tag.service';
     SnippetTagService
   ]
 })
-export class PublicBookmarksModule {}
+export class PublicResourcesModule {}

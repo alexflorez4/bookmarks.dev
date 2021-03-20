@@ -451,7 +451,7 @@ export class SaveBookmarkFormComponent implements OnInit {
   }
 
   navigateToBookmarkDetails(bookmark: Bookmark): void {
-    const link = [`./personal/bookmarks/${bookmark._id}/details`];
+    const link = [`./my-bookmarks/${bookmark._id}/details`];
     this.router.navigate(link,
       {
         state: {bookmark: bookmark},
@@ -560,7 +560,7 @@ export class SaveBookmarkFormComponent implements OnInit {
   }
 
   editExistingBookmark(): void {
-    const link = [`./personal/bookmarks/${this.existingPersonalBookmark._id}/edit`];
+    const link = [`./my-bookmarks/${this.existingPersonalBookmark._id}/edit`];
     this.router.navigate(link, {state: {bookmark: this.existingPersonalBookmark}});
   }
 }

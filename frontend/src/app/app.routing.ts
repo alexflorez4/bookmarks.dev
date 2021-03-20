@@ -5,8 +5,12 @@ import { SnippetNotFoundComponent } from './not-found/snippet-not-found.componen
 
 const routes: Routes = [
   {
+    path: 'my-bookmarks',
+    loadChildren: () => import('app/my-bookmarks/my-bookmarks.module').then(m => m.MyBookmarksModule)
+  },
+  {
     path: 'personal',
-    loadChildren: () => import('app/personal/personal-bookmarks.module').then(m => m.PersonalBookmarksModule)
+    redirectTo: 'my-bookmarks', // needed for already installed extension or bookmarklets
   },
   {
     path: 'dashboard',
@@ -18,15 +22,15 @@ const routes: Routes = [
   },
   {
     path: 'public',
-    loadChildren: () => import('app/public/public.module').then(m => m.PublicBookmarksModule)
+    loadChildren: () => import('app/public/public.module').then(m => m.PublicResourcesModule)
   },
   {
     path: 'my-snippets',
-    loadChildren: () => import('app/snippets/snippets.module').then(m => m.SnippetsModule)
+    loadChildren: () => import('app/my-snippets/my-snippets.module').then(m => m.MySnippetsModule)
   },
   {
-    path: 'my-snippets',
-    redirectTo: 'my-snippets',
+    path: 'my-codelets',
+    redirectTo: 'my-snippets', // needed for already installed extension or bookmarklets
   },
   {
     path: 'search',

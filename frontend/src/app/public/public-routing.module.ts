@@ -11,7 +11,7 @@ import { PublicSnippetDetailsComponent } from './snippets/public-snippet-details
 import { PublicSnippetsComponent } from './public-snippets/public-snippets.component';
 import { SnippetTaggedComponent } from './snippets/tag/snippet-tagged.component';
 
-const publicBookmarksRoutes: Routes = [
+const publicRoutes: Routes = [
   {
     path: 'history',
     redirectTo: '/?tab=history',
@@ -122,8 +122,8 @@ const publicBookmarksRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(publicBookmarksRoutes)],
+  imports: [RouterModule.forChild(publicRoutes)],
   exports: [RouterModule]
 })
-export class PublicBookmarksRoutingModule {
+export class PublicRoutingModule {
 }

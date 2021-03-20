@@ -1,16 +1,16 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { PersonalBookmarksComponent } from './personal-bookmarks.component';
+import { MyBookmarksEntryPointComponent } from './my-bookmarks-entry-point.component';
 import { AuthGuard } from '../core/auth/auth-guard.service';
 import { UpdatePersonalBookmarkComponent } from './update/update-personal-bookmark.component';
 import { CreatePersonalBookmarkComponent } from './create/create-personal-bookmark.component';
 import { CopyToMineBookmarkComponent } from './copy-to-mine/copy-to-mine-bookmark.component';
 import { BookmarkDetailsComponent } from './bookmark-details/bookmark-details.component';
 
-const personalBookmarksRoutes: Routes = [
+const myBookmarksRoutes: Routes = [
   {
     path: '',
-    component: PersonalBookmarksComponent,
+    component: MyBookmarksEntryPointComponent,
     canActivate: [AuthGuard],
     children: [
       {
@@ -18,15 +18,15 @@ const personalBookmarksRoutes: Routes = [
         component: CreatePersonalBookmarkComponent
       },
       {
-        path: 'bookmarks/copy-to-mine',
+        path: 'copy-to-mine',
         component: CopyToMineBookmarkComponent
       },
       {
-        path: 'bookmarks/:id/details',
+        path: ':id/details',
         component: BookmarkDetailsComponent
       },
       {
-        path: 'bookmarks/:id/edit',
+        path: ':id/edit',
         component: UpdatePersonalBookmarkComponent
       }
     ]
@@ -34,8 +34,8 @@ const personalBookmarksRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(personalBookmarksRoutes)],
+  imports: [RouterModule.forChild(myBookmarksRoutes)],
   exports: [RouterModule]
 })
-export class PersonalBookmarksRoutingModule {
+export class MyBookmarksRoutingModule {
 }

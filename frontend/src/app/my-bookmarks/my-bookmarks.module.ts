@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { PersonalBookmarksRoutingModule } from './personal-bookmarks-routing.module';
-import { PersonalBookmarksComponent } from './personal-bookmarks.component';
+import { MyBookmarksRoutingModule } from './my-bookmarks-routing.module';
+import { MyBookmarksEntryPointComponent } from './my-bookmarks-entry-point.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { UpdatePersonalBookmarkComponent } from './update/update-personal-bookmark.component';
@@ -25,7 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CreatePersonalBookmarkComponent,
     UpdatePersonalBookmarkComponent,
     CopyToMineBookmarkComponent,
-    PersonalBookmarksComponent,
+    MyBookmarksEntryPointComponent,
     PublicBookmarkPresentDialogComponent,
     SaveBookmarkFormComponent,
     BookmarkDetailsComponent
@@ -41,7 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatAutocompleteModule,
     MatTabsModule,
     MatDialogModule,
-    PersonalBookmarksRoutingModule
+    MyBookmarksRoutingModule
   ],
   providers: [
     DatePipe
@@ -50,4 +50,4 @@ import { MatDialogModule } from '@angular/material/dialog';
     PublicBookmarkPresentDialogComponent
   ]
 })
-export class PersonalBookmarksModule {}
+export class MyBookmarksModule {}

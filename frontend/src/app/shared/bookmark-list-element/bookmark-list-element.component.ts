@@ -220,7 +220,7 @@ export class BookmarkListElementComponent extends TagFollowingBaseComponent impl
   }
 
   editBookmark(bookmark: Bookmark): void {
-    const link = [`./personal/bookmarks/${bookmark._id}/edit`];
+    const link = [`./my-bookmarks/${bookmark._id}/edit`];
     this.router.navigate(link, {state: {bookmark: bookmark}});
   }
 
@@ -236,7 +236,7 @@ export class BookmarkListElementComponent extends TagFollowingBaseComponent impl
 
       const dialogRef = this.loginDialog.open(LoginRequiredDialogComponent, dialogConfig);
     } else {
-      const link = ['./personal/bookmarks/copy-to-mine'];
+      const link = ['./my-bookmarks/copy-to-mine'];
       this.router.navigate(link, {state: {bookmark: bookmark}, queryParams: {id: bookmark._id}});
     }
   }

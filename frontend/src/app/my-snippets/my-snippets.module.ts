@@ -79,5 +79,5 @@ const codeletRoutes: Routes = [
     DeleteSnippetDialogComponent
   ]
 })
-export class SnippetsModule {
+export class MySnippetsModule {
 }
