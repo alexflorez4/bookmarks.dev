@@ -1,39 +1,39 @@
-const Codelet = require('../../../model/codelet');
+const Snippet = require('../../../model/snippet');
 
 const NotFoundError = require('../../../error/not-found.error');
 
-const CodeletInputValidator = require('./codelet-input.validator');
+const CodeletInputValidator = require('./snippet-input.validator');
 
 /**
  * CREATE snippet for user
  */
-let createCodelet = async function (userId, codeletData) {
-  CodeletInputValidator.validateCodeletInput(userId, codeletData);
+let createSnippet = async function (userId, snippetData) {
+  CodeletInputValidator.validateSnippetInput(userId, snippetData);
 
-  const codelet = new Codelet(codeletData);
-  let newCodelet = await codelet.save();
+  const snippet = new Snippet(snippetData);
+  let newSnippet = await snippet.save();
 
-  return newCodelet;
+  return newSnippet;
 }
 
 /* GET bookmark of user by bookmarkId */
-let getCodeletById = async (userId, codeletId) => {
+let getSnippetById = async (userId, snippetId) => {
 
-  const codelet = await Codelet.findOne({
-    _id: codeletId,
+  const snippet = await Snippet.findOne({
+    _id: snippetId,
     userId: userId
   });
 
-  if ( !codelet ) {
-    throw new NotFoundError(`Codelet NOT_FOUND the userId: ${userId} AND id: ${codeletId}`);
+  if ( !snippet ) {
+    throw new NotFoundError(`Codelet NOT_FOUND the userId: ${userId} AND id: ${snippetId}`);
   } else {
-    return codelet;
+    return snippet;
   }
 };
 
 /* GET last created snippets of the user */
 let getLatestSnippets = async (userId, limit) => {
-  const snippets = await Codelet.find({userId: userId})
+  const snippets = await Snippet.find({userId: userId})
     .sort({createdAt: -1})
     .limit(limit);
 
@@ -44,11 +44,11 @@ let getLatestSnippets = async (userId, limit) => {
  * full UPDATE via PUT - that is the whole document is required and will be updated
  * the descriptionHtml parameter is only set in backend, if only does not come front-end (might be an API call)
  */
-let updateCodelet = async (userId, codeletId, codeletData) => {
+let updateSnippet = async (userId, codeletId, codeletData) => {
 
-  CodeletInputValidator.validateCodeletInput(userId, codeletData);
+  CodeletInputValidator.validateSnippetInput(userId, codeletData);
 
-  const updatedCodelet = await Codelet.findOneAndUpdate(
+  const updatedCodelet = await Snippet.findOneAndUpdate(
     {
       _id: codeletId,
       userId: userId
@@ -68,21 +68,21 @@ let updateCodelet = async (userId, codeletId, codeletData) => {
 /*
 * DELETE snippet for user
 */
-let deleteCodeletById = async (userId, codeletId) => {
-  const codelet = await Codelet.findOneAndRemove({
+let deleteSnippetById = async (userId, codeletId) => {
+  const snippet = await Snippet.findOneAndRemove({
     _id: codeletId,
     userId: userId
   });
 
-  if ( !codelet ) {
+  if ( !snippet ) {
     throw new NotFoundError('Snippet NOT_FOUND with id: ' + codeletId);
   }
 };
 
 /* GET suggested tags used for user */
-let getSuggestedCodeletTags = async (userId) => {
+let getSuggestedSnippetTags = async (userId) => {
 
-  const tags = await Codelet.distinct("tags",
+  const tags = await Snippet.distinct("tags",
     {userId: userId}
   ); // sort does not work with distinct in mongoose - https://mongoosejs.com/docs/api.html#query_Query-sort
 
@@ -91,10 +91,10 @@ let getSuggestedCodeletTags = async (userId) => {
 
 
 module.exports = {
-  createCodelet: createCodelet,
-  getSuggestedCodeletTags: getSuggestedCodeletTags,
-  getCodeletById: getCodeletById,
+  createCodelet: createSnippet,
+  getSuggestedSnippetTags: getSuggestedSnippetTags,
+  getSnippetById: getSnippetById,
   getLatestSnippets: getLatestSnippets,
-  updateCodelet: updateCodelet,
-  deleteCodeletById: deleteCodeletById,
+  updateSnippet: updateSnippet,
+  deleteCodeletById: deleteSnippetById,
 };

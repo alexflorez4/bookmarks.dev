@@ -63,12 +63,12 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
     super.ngOnInit();
   }
 
-  private patchFormWithData(codelet: Snippet) {
-    this.snippetFormGroup.patchValue(codelet);
+  private patchFormWithData(snippet: Snippet) {
+    this.snippetFormGroup.patchValue(snippet);
     if (this.copyToMine) {
       this.snippet.public = false;
       this.snippetFormGroup.get('public').setValue(false);
-      this.snippetFormGroup.get('copiedFromId').setValue(codelet._id);
+      this.snippetFormGroup.get('copiedFromId').setValue(snippet._id);
     }
 
     for (let i = 0; i < this.snippet.tags.length; i++) {
@@ -76,8 +76,8 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
     }
 
     this.codeSnippetsFormArray.removeAt(0); // there is an empty element created when building form - needs removing
-    for (let i = 0; i < codelet.codeSnippets.length; i++) {
-      this.codeSnippetsFormArray.push(this.createCodeSnippet(codelet.codeSnippets[i]));
+    for (let i = 0; i < snippet.codeSnippets.length; i++) {
+      this.codeSnippetsFormArray.push(this.createCodeSnippet(snippet.codeSnippets[i]));
     }
 
     this.tagsControl.setValue(null);
@@ -97,11 +97,11 @@ export class UpdateSnippetFormComponent extends SnippetFormBaseComponent impleme
     this.codeSnippetsFormArray = this.snippetFormGroup.get('codeSnippets') as FormArray;
   }
 
-  saveSnippet(codelet: Snippet) {
+  saveSnippet(snippet: Snippet) {
     if (this.copyToMine) {
-      super.createCodelet(codelet, this.copyToMine, null);
+      super.createSnippet(snippet, this.copyToMine, null);
     } else {
-      this.updateSnippet(codelet);
+      this.updateSnippet(snippet);
     }
   }
 

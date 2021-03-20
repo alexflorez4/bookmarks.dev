@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { codelet_common_tags } from '../../shared/codelet-common-tags';
+import { snippet_common_tags } from '../../shared/snippet-common-tags';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Snippet, CodeSnippet } from '../../core/model/snippet';
 import { map, startWith } from 'rxjs/operators';
@@ -36,7 +36,7 @@ export class SnippetFormBaseComponent implements OnInit {
   // Enter, comma, space
   separatorKeysCodes = [ENTER, COMMA];
 
-  commonCodeletTags = codelet_common_tags;
+  commonCodeletTags = snippet_common_tags;
 
   autocompleteTags = [];
 
@@ -153,25 +153,25 @@ export class SnippetFormBaseComponent implements OnInit {
     this.codeSnippetsFormArray.removeAt(index);
   }
 
-  createCodelet(codelet: Snippet, copyToMine: boolean, popup: any) {
-    codelet.userId = this.userId;
+  createSnippet(snippet: Snippet, copyToMine: boolean, popup: any) {
+    snippet.userId = this.userId;
     const now = new Date();
-    codelet.lastAccessedAt = now;
+    snippet.lastAccessedAt = now;
     if (copyToMine) {
-      delete codelet['_id'];
-      codelet.createdAt = now
+      delete snippet['_id'];
+      snippet.createdAt = now
     }
 
-    this.personalSnippetsService.createSnippet(this.userId, codelet)
+    this.personalSnippetsService.createSnippet(this.userId, snippet)
       .subscribe(
         response => {
           const headers = response.headers;
           // get the snippet id, which lies in the "location" response header
           const lastSlashIndex = headers.get('location').lastIndexOf('/');
           const newCodeletId = headers.get('location').substring(lastSlashIndex + 1);
-          codelet._id = newCodeletId;
+          snippet._id = newCodeletId;
           const queryParmas = popup ? {popup: popup} : {};
-          this.navigateToSnippetDetails(codelet, queryParmas)
+          this.navigateToSnippetDetails(snippet, queryParmas)
         },
         (error: HttpResponse<any>) => {
           this.errorService.handleError(error.body.json());

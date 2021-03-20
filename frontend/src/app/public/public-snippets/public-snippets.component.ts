@@ -7,7 +7,7 @@ import { PaginationNotificationService } from '../../core/pagination-notificatio
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-public-codelets',
+  selector: 'app-public-snippets',
   templateUrl: './public-snippets.component.html',
   styleUrls: ['./public-snippets.component.css']
 })

@@ -10,14 +10,14 @@ import {
 import { Snippet } from '../../../core/model/snippet';
 
 @Component({
-  selector: 'app-codelet-card-body',
+  selector: 'app-snippet-card-body',
   templateUrl: './snippet-card-body.component.html',
     styleUrls: [ './snippet-card-body.component.scss' ]
 })
 export class SnippetCardBodyComponent  implements  AfterViewInit, AfterViewChecked {
 
   @Input()
-  codelet: Snippet;
+  snippet: Snippet;
 
   @Input()
   queryText: string;

@@ -1,26 +1,26 @@
 const constants = require('../../../common/constants');
 const ValidationError = require('../../../error/validation.error');
 
-let validateCodeletInput = function(userId, codelet) {
+let validateSnippetInput = function(userId, snippet) {
 
   let validationErrorMessages = [];
 
-  if (!codelet.userId) {
+  if (!snippet.userId) {
     validationErrorMessages.push('Missing required attribute - userId');
   }
 
-  if (codelet.userId !== userId) {
+  if (snippet.userId !== userId) {
     validationErrorMessages.push("The userId of the snippet does not match the userId parameter");
   }
 
-  if (!codelet.title) {
+  if (!snippet.title) {
     validationErrorMessages.push('Missing required attribute - name');
   }
-  if (!codelet.codeSnippets) {
+  if (!snippet.codeSnippets) {
     validationErrorMessages.push('Missing required attribute - codeSnippets');
   }
-  if (codelet.codeSnippets && codelet.codeSnippets.length > 0) {
-    for(let codeSnippet of codelet.codeSnippets) {
+  if (snippet.codeSnippets && snippet.codeSnippets.length > 0) {
+    for(let codeSnippet of snippet.codeSnippets) {
       const descriptionIsTooLong = codeSnippet.code.length > constants.MAX_NUMBER_OF_CHARS_FOR_CODE_SNIPPET;
       if (descriptionIsTooLong) {
         validationErrorMessages.push('The code snippet is too long. Max ' + constants.MAX_NUMBER_OF_CHARS_FOR_CODE_SNIPPET + ' allowed');
@@ -33,9 +33,9 @@ let validateCodeletInput = function(userId, codelet) {
     }
   }
 
-  if (!codelet.tags || codelet.tags.length === 0) {
+  if (!snippet.tags || snippet.tags.length === 0) {
     validationErrorMessages.push('Missing required attribute - tags');
-  } else if (codelet.tags.length > constants.MAX_NUMBER_OF_TAGS) {
+  } else if (snippet.tags.length > constants.MAX_NUMBER_OF_TAGS) {
     validationErrorMessages.push('Too many tags have been submitted - max allowed 8');
   }
 
@@ -45,5 +45,5 @@ let validateCodeletInput = function(userId, codelet) {
 }
 
 module.exports = {
-  validateCodeletInput: validateCodeletInput,
+  validateSnippetInput: validateSnippetInput,
 };

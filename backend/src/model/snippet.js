@@ -11,7 +11,7 @@ const CodeSnippetSchema = new Schema({
   comment: String,
 });
 
-const codeletSchema = new Schema({
+const snippetSchema = new Schema({
     title: {type:String, required: true},
     codeSnippets: [CodeSnippetSchema],
     tags: [String],
@@ -30,5 +30,5 @@ const codeletSchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Codelet', codeletSchema);
+module.exports = mongoose.model('Snippet', snippetSchema);
 

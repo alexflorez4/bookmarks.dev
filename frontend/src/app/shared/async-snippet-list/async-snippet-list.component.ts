@@ -7,14 +7,14 @@ import { PaginationNotificationService } from '../../core/pagination-notificatio
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-async-codelet-list',
+  selector: 'app-async-snippet-list',
   templateUrl: './async-snippet-list.component.html',
   styleUrls: ['./async-snippet-list.component.scss']
 })
 export class AsyncSnippetListComponent implements OnInit, OnChanges {
 
   @Input()
-  codelets$: Observable<Snippet[]>;
+  snippets$: Observable<Snippet[]>;
 
   @Input()
   queryText: string; // used for highlighting search terms in the bookmarks list
@@ -46,8 +46,8 @@ export class AsyncSnippetListComponent implements OnInit, OnChanges {
     }
   }
 
-  of(codelet: Snippet) {
-    return of(codelet);
+  of(snippet: Snippet) {
+    return of(snippet);
   }
 
   navigate(page: number) {

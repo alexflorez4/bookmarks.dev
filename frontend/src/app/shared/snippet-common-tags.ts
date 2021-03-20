@@ -4,7 +4,7 @@
  *
  */
 // see - https://github.com/highlightjs/highlight.js/blob/master/SUPPORTED_LANGUAGES.md
-export const codelet_common_tags = [
+export const snippet_common_tags = [
   'apache',
   'bash',
   'coffeescript',

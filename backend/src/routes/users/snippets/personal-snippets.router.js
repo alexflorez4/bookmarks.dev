@@ -1,8 +1,8 @@
 const express = require('express');
-const personalCodeletsRouter = express.Router({mergeParams: true});
+const personalSnippetsRouter = express.Router({mergeParams: true});
 const Keycloak = require('keycloak-connect');
 
-const PersonalCodeletsService = require('./personal-codelets.service');
+const PersonalCodeletsService = require('./personal-snippets.service');
 const SnippetsSearchService = require('../../../common/snippets-search.service');
 const UserIdValidator = require('../userid.validator');
 const PaginationQueryParamsHelper = require('../../../common/pagination-query-params-helper');
@@ -14,12 +14,12 @@ const HttpStatus = require('http-status-codes/index');
 
 //add keycloak middleware
 const keycloak = new Keycloak({scope: 'openid'}, config.keycloak);
-personalCodeletsRouter.use(keycloak.middleware());
+personalSnippetsRouter.use(keycloak.middleware());
 
 /**
  * CREATE snippet for user
  */
-personalCodeletsRouter.post('/', keycloak.protect(), async (request, response) => {
+personalSnippetsRouter.post('/', keycloak.protect(), async (request, response) => {
 
   UserIdValidator.validateUserId(request);
   const codeletData = request.body;
@@ -37,9 +37,9 @@ personalCodeletsRouter.post('/', keycloak.protect(), async (request, response) =
  *
  * Order matters - needs to be GET snippet by id
  **/
-personalCodeletsRouter.get('/suggested-tags', keycloak.protect(), async (request, response) => {
+personalSnippetsRouter.get('/suggested-tags', keycloak.protect(), async (request, response) => {
   UserIdValidator.validateUserId(request);
-  const tags = await PersonalCodeletsService.getSuggestedCodeletTags(request.params.userId);
+  const tags = await PersonalCodeletsService.getSuggestedSnippetTags(request.params.userId);
 
   response.send(tags);
 });
@@ -47,7 +47,7 @@ personalCodeletsRouter.get('/suggested-tags', keycloak.protect(), async (request
 /**
  * Find personal snippets
  */
-personalCodeletsRouter.get('/', keycloak.protect(), async (request, response, next) => {
+personalSnippetsRouter.get('/', keycloak.protect(), async (request, response, next) => {
   UserIdValidator.validateUserId(request);
 
   const searchText = request.query.q;
@@ -70,7 +70,7 @@ personalCodeletsRouter.get('/', keycloak.protect(), async (request, response, ne
 /**
  * Find personal snippets
  */
-personalCodeletsRouter.get('/', keycloak.protect(), async (request, response) => {
+personalSnippetsRouter.get('/', keycloak.protect(), async (request, response) => {
   UserIdValidator.validateUserId(request);
 
   const {userId} = request.params;
@@ -81,27 +81,27 @@ personalCodeletsRouter.get('/', keycloak.protect(), async (request, response) =>
 });
 
 /* GET snippet of user */
-personalCodeletsRouter.get('/:snippetId', keycloak.protect(), async (request, response) => {
+personalSnippetsRouter.get('/:snippetId', keycloak.protect(), async (request, response) => {
   UserIdValidator.validateUserId(request);
 
   const {userId, snippetId: snippetId} = request.params;
-  const codelet = await PersonalCodeletsService.getCodeletById(userId, snippetId);
+  const snippet = await PersonalCodeletsService.getSnippetById(userId, snippetId);
 
-  return response.status(HttpStatus.OK).send(codelet);
+  return response.status(HttpStatus.OK).send(snippet);
 });
 
 /**
  * full UPDATE via PUT - that is the whole document is required and will be updated
  * the descriptionHtml parameter is only set in backend, if only does not come front-end (might be an API call)
  */
-personalCodeletsRouter.put('/:snippetId', keycloak.protect(), async (request, response) => {
+personalSnippetsRouter.put('/:snippetId', keycloak.protect(), async (request, response) => {
 
   UserIdValidator.validateUserId(request);
 
   const codeletData = request.body;
 
   const {userId, snippetId} = request.params;
-  const updatedBookmark = await PersonalCodeletsService.updateCodelet(userId, snippetId, codeletData);
+  const updatedBookmark = await PersonalCodeletsService.updateSnippet(userId, snippetId, codeletData);
 
   return response.status(HttpStatus.OK).send(updatedBookmark);
 });
@@ -109,7 +109,7 @@ personalCodeletsRouter.put('/:snippetId', keycloak.protect(), async (request, re
 /*
 * DELETE bookmark for user
 */
-personalCodeletsRouter.delete('/:snippetId', keycloak.protect(), async (request, response) => {
+personalSnippetsRouter.delete('/:snippetId', keycloak.protect(), async (request, response) => {
 
   UserIdValidator.validateUserId(request);
   const {userId, snippetId} = request.params;
@@ -117,4 +117,4 @@ personalCodeletsRouter.delete('/:snippetId', keycloak.protect(), async (request,
   return response.status(HttpStatus.NO_CONTENT).send();
 });
 
-module.exports = personalCodeletsRouter;
+module.exports = personalSnippetsRouter;

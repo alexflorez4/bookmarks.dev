@@ -70,7 +70,7 @@ export class SnippetDetailsComponent implements OnInit {
 
   editCodelet(snippet: Snippet) {
     const link = [`/my-snippets/${snippet._id}/edit`];
-    this.router.navigate(link, {state: {codelet: snippet}});
+    this.router.navigate(link, {state: {snippet: snippet}});
   }
 
 

@@ -25,7 +25,7 @@ const routes: Routes = [
     loadChildren: () => import('app/snippets/snippets.module').then(m => m.SnippetsModule)
   },
   {
-    path: 'my-codelets',
+    path: 'my-snippets',
     redirectTo: 'my-snippets',
   },
   {

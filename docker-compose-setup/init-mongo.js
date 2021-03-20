@@ -98,7 +98,7 @@ db.bookmarks.insert(
       "userDisplayName": "Mock",
       "language": "en",
       "description": "How to save and search bookmarks, use bookmarklets and chrome extension",
-      "descriptionHtml": "<p>How to save and search bookmarks, use bookmarklets and chrome extension. Use codelets and more</p>",
+      "descriptionHtml": "<p>How to save and search bookmarks, use bookmarklets and chrome extension. Use snippets and more</p>",
       "publishedOn": null,
       "sourceCodeURL": "https://github.com/CodepediaOrg/bookmarks",
       "public": true,
@@ -142,13 +142,13 @@ db.bookmarks.createIndex(
   }
 );
 
-// codelets indexes
+// snippets indexes
 
-db.codelets.createIndex(
+db.snippets.createIndex(
   {userId: 1}
 );
 
-db.codelets.createIndex(
+db.snippets.createIndex(
   {
     title: "text",
     tags: "text",

@@ -210,7 +210,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
       );
       this.searchBookmarks(this.searchText, SearchDomain.MY_SNIPPETS, searchInclude);
     } else {
-      const dialogConfig = this.loginDialogHelperService.loginDialogConfig('You need to be logged in to search through personal codelets');
+      const dialogConfig = this.loginDialogHelperService.loginDialogConfig('You need to be logged in to search through personal snippets');
       this.loginDialog.open(LoginRequiredDialogComponent, dialogConfig);
     }
 

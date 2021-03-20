@@ -20,17 +20,17 @@ export class PersonalSnippetsService {
   }
 
   getPersonalSnippetById(userId: string, codeletId: string): Observable<Snippet> {
-    return this.httpClient.get<Snippet>(`${this.personalSnippetsApiBaseUrl}/${userId}/codelets/${codeletId}`).pipe(shareReplay(1));
+    return this.httpClient.get<Snippet>(`${this.personalSnippetsApiBaseUrl}/${userId}/snippets/${codeletId}`).pipe(shareReplay(1));
   }
 
   getSuggestedSnippetTags(userId: String): Observable<string[]> {
-    return this.httpClient.get<string[]>(`${this.personalSnippetsApiBaseUrl}/${userId}/codelets/suggested-tags`)
+    return this.httpClient.get<string[]>(`${this.personalSnippetsApiBaseUrl}/${userId}/snippets/suggested-tags`)
       .pipe(shareReplay(1));
   }
 
   updateSnippet(snippet: Snippet): Observable<any> {
     return this.httpClient
-      .put(`${this.personalSnippetsApiBaseUrl}/${snippet.userId}/codelets/${snippet._id}`, JSON.stringify(snippet),
+      .put(`${this.personalSnippetsApiBaseUrl}/${snippet.userId}/snippets/${snippet._id}`, JSON.stringify(snippet),
         {headers: this.headers})
       .pipe(shareReplay(1));
   }
@@ -38,7 +38,7 @@ export class PersonalSnippetsService {
 
   createSnippet(userId: string, snippet: Snippet): Observable<any> {
     return this.httpClient
-      .post(`${this.personalSnippetsApiBaseUrl}/${userId}/codelets`, JSON.stringify(snippet), {
+      .post(`${this.personalSnippetsApiBaseUrl}/${userId}/snippets`, JSON.stringify(snippet), {
         headers: this.headers,
         observe: 'response'
       })
@@ -54,7 +54,7 @@ export class PersonalSnippetsService {
 
   deleteSnippetById(userId: string, codeletId: string): Observable<any> {
     return this.httpClient
-      .delete(`${this.personalSnippetsApiBaseUrl}/${userId}/codelets/${codeletId}`, {headers: this.headers})
+      .delete(`${this.personalSnippetsApiBaseUrl}/${userId}/snippets/${codeletId}`, {headers: this.headers})
       .pipe(shareReplay(1));
   }
 
@@ -66,13 +66,13 @@ export class PersonalSnippetsService {
       .set('limit', limit.toString())
       .set('include', include);
 
-    return this.httpClient.get<Snippet[]>(`${this.personalSnippetsApiBaseUrl}/${userId}/codelets`,
+    return this.httpClient.get<Snippet[]>(`${this.personalSnippetsApiBaseUrl}/${userId}/snippets`,
       {params: params})
       .pipe(shareReplay(1));
   }
 
   getLatestSnippets(userId: string) {
-    return this.httpClient.get<Snippet[]>(`${this.personalSnippetsApiBaseUrl}/${userId}/codelets`)
+    return this.httpClient.get<Snippet[]>(`${this.personalSnippetsApiBaseUrl}/${userId}/snippets`)
       .pipe(shareReplay(1));
   }
 }

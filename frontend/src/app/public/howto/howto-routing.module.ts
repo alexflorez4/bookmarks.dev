@@ -34,7 +34,7 @@ const howToRoutes: Routes = [
     component: HowToSnippetComponent
   },
   {
-    path: 'codelets',
+    path: 'snippets',
     redirectTo: 'snippets',
   },
   {

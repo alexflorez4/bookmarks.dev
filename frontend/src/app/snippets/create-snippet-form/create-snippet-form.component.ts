@@ -17,7 +17,7 @@ import { WebpageInfo } from '../../core/model/webpage-info';
 import { SnippetFormBaseComponent } from '../snippet-form-base/snippet-form.base.component';
 
 @Component({
-  selector: 'app-save-codelet-form',
+  selector: 'app-save-snippet-form',
   templateUrl: './create-snippet-form.component.html',
   styleUrls: ['./create-snippet-form.component.scss']
 })

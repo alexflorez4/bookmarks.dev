@@ -1,5 +1,5 @@
 <div class="navigation-space-buffer rounded bg-white shadow-sm">
-  <form [formGroup]="snippetFormGroup" novalidate (ngSubmit)="createCodelet(snippetFormGroup.value, false, popup)">
+  <form [formGroup]="snippetFormGroup" novalidate (ngSubmit)="createSnippet(snippetFormGroup.value, false, popup)">
     <div class="form-group pb-1">
       <label for="title">Title*</label>
       <input type="text" class="form-control" id="title"
