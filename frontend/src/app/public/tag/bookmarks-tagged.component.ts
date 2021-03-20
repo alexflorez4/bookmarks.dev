@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TagService } from './tag.service';
+import { BookmarksTaggedService } from './bookmarks-tagged.service';
 import { ActivatedRoute } from '@angular/router';
 import { Bookmark } from '../../core/model/bookmark';
 import { Observable } from 'rxjs';
@@ -15,10 +15,10 @@ import { UserDataWatchedTagsStore } from '../../core/user/userdata.watched-tags.
 
 @Component({
   selector: 'app-tag',
-  templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.css']
+  templateUrl: './bookmarks-tagged.component.html',
+  styleUrls: ['./bookmarks-tagged.component.css']
 })
-export class TagComponent implements OnInit {
+export class BookmarksTaggedComponent implements OnInit {
 
   bookmarksForTag$: Observable<Bookmark[]>;
   tag: string;
@@ -29,7 +29,7 @@ export class TagComponent implements OnInit {
   currentPage: number;
   taggedCallerPagination = 'tagged-page';
 
-  constructor(private tagService: TagService,
+  constructor(private tagService: BookmarksTaggedService,
               private userDataStore: UserDataStore,
               private userDataWatchedTagsStore: UserDataWatchedTagsStore,
               private userInfoStore: UserInfoStore,

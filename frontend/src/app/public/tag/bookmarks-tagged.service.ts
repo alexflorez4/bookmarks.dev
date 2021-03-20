@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { shareReplay } from 'rxjs/operators';
 
 @Injectable()
-export class TagService {
+export class BookmarksTaggedService {
 
   private bookmarksUrl = '';  // URL to web api
 

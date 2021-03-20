@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { AboutComponent } from './about/about.component';
-import { TagService } from './tag/tag.service';
-import { TagComponent } from './tag/tag.component';
+import { BookmarksTaggedService } from './tag/bookmarks-tagged.service';
+import { BookmarksTaggedComponent } from './tag/bookmarks-tagged.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { HomepageComponent } from './bookmarks/homepage.component';
 import { PublicBookmarksStore } from './bookmarks/store/public-bookmarks-store.service';
@@ -29,7 +29,7 @@ import { SnippetTagService } from './snippets/tag/snippet-tag.service';
     TermsOfServiceComponent,
     HomepageComponent,
     UserPublicProfileComponent,
-    TagComponent,
+    BookmarksTaggedComponent,
     VersionComponent,
     PublicSnippetDetailsComponent,
     PublicSnippetsComponent,
@@ -48,7 +48,7 @@ import { SnippetTagService } from './snippets/tag/snippet-tag.service';
     PublicSnippetsService,
     PublicBookmarksStore,
     UserPublicService,
-    TagService,
+    BookmarksTaggedService,
     SnippetTagService
   ]
 })

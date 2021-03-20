@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { TagComponent } from './tag/tag.component';
+import { BookmarksTaggedComponent } from './tag/bookmarks-tagged.component';
 import { AboutComponent } from './about/about.component';
 import { HomepageComponent } from './bookmarks/homepage.component';
 import { PrivacyPolicyComponent } from './privacy/privacy-policy.component';
@@ -39,15 +39,27 @@ const publicRoutes: Routes = [
   },
   {
     path: 'tagged/:tag',
-    component: TagComponent
+    redirectTo: 'bookmarks/t/:tag'
   },
   {
     path: 'tags/:tag',
-    component: TagComponent
+    redirectTo: 'bookmarks/t/:tag'
   },
   {
     path: 't/:tag',
-    component: TagComponent
+    redirectTo: 'bookmarks/t/:tag'
+  },
+  {
+    path: 'bookmarks/tagged/:tag',
+    redirectTo: 'bookmarks/t/:tag'
+  },
+  {
+    path: 'bookmarks/tags/:tag',
+    redirectTo: 'bookmarks/t/:tag'
+  },
+  {
+    path: 'bookmarks/t/:tag',
+    component: BookmarksTaggedComponent
   },
   {
     path: 'about',
