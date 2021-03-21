@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { tagsValidator } from '../../shared/tags-validation.directive';
+import { tagsValidator } from '../../shared/directive/tags-validation.directive';
 import { UserDataStore } from '../../core/user/userdata.store';
 import { Logger } from '../../core/logger.service';
 import { ActivatedRoute, Router } from '@angular/router';

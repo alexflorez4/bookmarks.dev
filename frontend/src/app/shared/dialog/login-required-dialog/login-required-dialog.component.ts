@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { KeycloakService } from 'keycloak-angular';
 import { Router } from '@angular/router';
-import { KeycloakServiceWrapper } from '../../core/keycloak-service-wrapper.service';
+import { KeycloakServiceWrapper } from '../../../core/keycloak-service-wrapper.service';
 
 @Component({
   selector: 'app-delete-bookmark-dialog',

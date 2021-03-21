@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Bookmark } from '../../core/model/bookmark';
+import { Bookmark } from '../../../core/model/bookmark';
 
 @Component({
   selector: 'app-play-youtube-video-dialog',

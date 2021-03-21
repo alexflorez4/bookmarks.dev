@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { UserData } from '../core/model/user-data';
-import { UserInfoStore } from '../core/user/user-info.store';
-import { UserDataStore } from '../core/user/userdata.store';
+import { UserData } from '../../core/model/user-data';
+import { UserInfoStore } from '../../core/user/user-info.store';
+import { UserDataStore } from '../../core/user/userdata.store';
 
 @Component({
   selector: 'app-user-settings',

@@ -15,7 +15,7 @@ import { PersonalBookmarksService } from '../../core/personal-bookmarks.service'
 import { KeycloakServiceWrapper } from '../../core/keycloak-service-wrapper.service';
 import { UserInfoStore } from '../../core/user/user-info.store';
 import { PaginationNotificationService } from '../../core/pagination-notification.service';
-import { LoginRequiredDialogComponent } from '../login-required-dialog/login-required-dialog.component';
+import { LoginRequiredDialogComponent } from '../dialog/login-required-dialog/login-required-dialog.component';
 import { Snippet } from '../../core/model/snippet';
 import { PersonalSnippetsService } from '../../core/personal-snippets.service';
 import { SearchNotificationService } from '../../core/search-notification.service';

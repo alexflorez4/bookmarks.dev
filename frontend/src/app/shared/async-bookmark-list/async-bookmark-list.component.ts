@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Injector, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Bookmark } from '../core/model/bookmark';
+import { Bookmark } from '../../core/model/bookmark';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserData } from '../core/model/user-data';
+import { UserData } from '../../core/model/user-data';
 import { MatDialog } from '@angular/material/dialog';
-import { PaginationNotificationService } from '../core/pagination-notification.service';
-import { environment } from '../../environments/environment';
-import { PaginationAction } from '../core/model/pagination-action';
-import { UserDataWatchedTagsStore } from '../core/user/userdata.watched-tags.store';
-import { TagFollowingBaseComponent } from './tag-following-base-component/tag-following-base.component';
+import { PaginationNotificationService } from '../../core/pagination-notification.service';
+import { environment } from '../../../environments/environment';
+import { PaginationAction } from '../../core/model/pagination-action';
+import { UserDataWatchedTagsStore } from '../../core/user/userdata.watched-tags.store';
+import { TagFollowingBaseComponent } from '../tag-following-base-component/tag-following-base.component';
 
 @Component({
   selector: 'app-async-bookmark-list',

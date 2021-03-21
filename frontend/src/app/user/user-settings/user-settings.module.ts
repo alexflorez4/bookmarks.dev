@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserSettingsComponent } from './user-settings.component';
-import { AuthGuard } from '../core/auth/auth-guard.service';
+import { AuthGuard } from '../../core/auth/auth-guard.service';
 import { CoreModule } from 'keycloak-angular';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UserProfileComponent } from './user-profile/user-profile.component';

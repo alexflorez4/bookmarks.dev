@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { snippet_common_tags } from '../../shared/snippet-common-tags';
+import { snippet_common_tags } from '../../shared/constants/snippet-common-tags';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Snippet, CodeSnippet } from '../../core/model/snippet';
 import { map, startWith } from 'rxjs/operators';
@@ -36,7 +36,7 @@ export class SnippetFormBaseComponent implements OnInit {
   // Enter, comma, space
   separatorKeysCodes = [ENTER, COMMA];
 
-  commonCodeletTags = snippet_common_tags;
+  commonSnippetTags = snippet_common_tags;
 
   autocompleteTags = [];
 
@@ -66,7 +66,7 @@ export class SnippetFormBaseComponent implements OnInit {
       this.userId = userInfo.sub;
       this.suggestedTagsStore.getSuggestedCodeletTags$(this.userId).subscribe(userTags => {
 
-        this.autocompleteTags = userTags.concat(this.commonCodeletTags.filter((item => userTags.indexOf(item) < 0))).sort();
+        this.autocompleteTags = userTags.concat(this.commonSnippetTags.filter((item => userTags.indexOf(item) < 0))).sort();
 
         this.filteredTags = this.tagsControl.valueChanges.pipe(
           startWith(null),

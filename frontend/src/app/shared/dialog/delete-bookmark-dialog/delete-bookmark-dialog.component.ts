@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Bookmark } from '../../core/model/bookmark';
+import { Bookmark } from '../../../core/model/bookmark';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { UserData } from '../../core/model/user-data';
+import { UserData } from '../../../core/model/user-data';
 import { Observable } from 'rxjs';
 
 @Component({

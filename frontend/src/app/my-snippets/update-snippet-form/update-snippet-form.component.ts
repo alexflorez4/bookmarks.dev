@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { tagsValidator } from '../../shared/tags-validation.directive';
+import { tagsValidator } from '../../shared/directive/tags-validation.directive';
 import { Logger } from '../../core/logger.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorService } from '../../core/error/error.service';

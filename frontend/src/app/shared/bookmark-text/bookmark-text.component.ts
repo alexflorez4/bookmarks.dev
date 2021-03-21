@@ -7,7 +7,7 @@ import {
   Input,
   ViewChild
 } from '@angular/core';
-import {Bookmark} from '../core/model/bookmark';
+import {Bookmark} from '../../core/model/bookmark';
 
 @Component({
   selector: 'app-bookmark-text',

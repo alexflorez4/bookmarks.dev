@@ -7,7 +7,7 @@ import { UserInfoStore } from '../../core/user/user-info.store';
 import { PublicSnippetsService } from '../../public/snippets/public-snippets.service';
 import { KeycloakService } from 'keycloak-angular';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { LoginRequiredDialogComponent } from '../login-required-dialog/login-required-dialog.component';
+import { LoginRequiredDialogComponent } from '../dialog/login-required-dialog/login-required-dialog.component';
 
 @Component({
   selector: 'app-snippet-details',

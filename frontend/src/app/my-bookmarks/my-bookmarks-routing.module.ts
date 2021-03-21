@@ -18,7 +18,7 @@ const myBookmarksRoutes: Routes = [
         component: CreatePersonalBookmarkComponent
       },
       {
-        path: 'copy-to-mine',
+        path: ':id/copy-to-mine',
         component: CopyToMineBookmarkComponent
       },
       {

@@ -1,6 +1,6 @@
 
 import { BookmarksFilterPipe } from './bookmarks-filter.pipe';
-import { Bookmark } from '../core/model/bookmark';
+import { Bookmark } from '../../core/model/bookmark';
 
 describe('BookmarkFilter Pipe', () => {
   let bookmarksFilterPipe: BookmarksFilterPipe;

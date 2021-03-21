@@ -1,7 +1,7 @@
 // filter.pipe.ts
 import { Pipe, PipeTransform } from '@angular/core';
-import { Bookmark } from '../core/model/bookmark';
-import { Search } from '../core/model/user-data';
+import { Bookmark } from '../../core/model/bookmark';
+import { Search } from '../../core/model/user-data';
 
 @Pipe({name: 'searchFilter'})
 export class SearchFilterPipe implements PipeTransform {

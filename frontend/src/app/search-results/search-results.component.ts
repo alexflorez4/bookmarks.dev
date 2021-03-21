@@ -18,7 +18,7 @@ import { PaginationNotificationService } from '../core/pagination-notification.s
 import { SearchDomain } from '../core/model/search-domain.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogHelperService } from '../core/login-dialog-helper.service';
-import { LoginRequiredDialogComponent } from '../shared/login-required-dialog/login-required-dialog.component';
+import { LoginRequiredDialogComponent } from '../shared/dialog/login-required-dialog/login-required-dialog.component';
 import { PublicSnippetsService } from '../public/snippets/public-snippets.service';
 
 @Component({

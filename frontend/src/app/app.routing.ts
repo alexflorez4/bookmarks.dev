@@ -14,11 +14,11 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('app/user/dashboard/user-dashboard.module').then(m => m.UserDashboardModule)
+    loadChildren: () => import('app/user/user-dashboard/user-dashboard.module').then(m => m.UserDashboardModule)
   },
   {
     path: 'settings',
-    loadChildren: () => import('app/user-settings/user-settings.module').then(m => m.UserSettingsModule)
+    loadChildren: () => import('app/user/user-settings/user-settings.module').then(m => m.UserSettingsModule)
   },
   {
     path: 'public',

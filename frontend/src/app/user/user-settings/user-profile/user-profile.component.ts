@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserData } from '../../core/model/user-data';
-import { UserDataStore } from '../../core/user/userdata.store';
+import { UserData } from '../../../core/model/user-data';
+import { UserDataStore } from '../../../core/user/userdata.store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { UserDataService } from '../../core/user-data.service';
-import { PersonalBookmarksService } from '../../core/personal-bookmarks.service';
+import { UserDataService } from '../../../core/user-data.service';
+import { PersonalBookmarksService } from '../../../core/personal-bookmarks.service';
 
 
 @Component({

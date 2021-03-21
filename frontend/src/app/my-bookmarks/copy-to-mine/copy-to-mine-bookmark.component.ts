@@ -20,7 +20,7 @@ export class CopyToMineBookmarkComponent implements OnInit {
   ngOnInit(): void {
     this.bookmark$ = of(window.history.state.bookmark);
     if (!window.history.state.bookmark) {
-      const id = this.route.snapshot.queryParamMap.get('id');
+      const id = this.route.snapshot.paramMap.get('id');
       this.bookmark$ = this.publicBookmarksService.getPublicBookmarkById(id);
     }
   }

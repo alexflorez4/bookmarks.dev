@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { Bookmark } from '../../core/model/bookmark';
-import { AddToHistoryService } from '../../core/user/add-to-history.service';
+import { Bookmark } from '../../../core/model/bookmark';
+import { AddToHistoryService } from '../../../core/user/add-to-history.service';
 
 @Component({
   selector: 'app-hotkeys-dialog',

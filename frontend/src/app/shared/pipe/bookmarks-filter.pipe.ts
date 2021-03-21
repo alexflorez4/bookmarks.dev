@@ -1,6 +1,6 @@
 // filter.pipe.ts
 import { Pipe, PipeTransform } from '@angular/core';
-import { Bookmark } from '../core/model/bookmark';
+import { Bookmark } from '../../core/model/bookmark';
 
 @Pipe({name: 'bookmarkFilter'})
 export class BookmarksFilterPipe implements PipeTransform {
